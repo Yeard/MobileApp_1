@@ -1,15 +1,26 @@
 import 'package:assignment_1/MyPractice.dart';
 import 'package:flutter/material.dart';
 
+class ContactModel {
+  String name;
+  ContactModel(this.name);
+}
+
+List<ContactModel> contacts = [
+  ContactModel('Learn Flutter'),
+  ContactModel('Tech State Management'),
+  ContactModel('Import Provider Packages'),
+  ContactModel('Add New Task')
+];
+
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
-        child: Icon(
+        child: const Icon(
           Icons.home,
           color: Colors.white,
         ),
@@ -30,20 +41,14 @@ class TasksScreen extends StatelessWidget {
               ),
               color: Colors.lightBlueAccent,
             ),
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
                 top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
-            child:const Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundImage: AssetImage('images/Tanvir.jpeg'),
-                ),
-                SizedBox(
-                  height: 20,
-                  child: Divider(
-                    color: Colors.white,
-                  ),
+                  backgroundImage: AssetImage('images/TT.jpg'),
                 ),
                 Text(
                   "Tanvir Hossain",
@@ -51,6 +56,7 @@ class TasksScreen extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 17.0,
                     fontWeight: FontWeight.w700,
+                    fontFamily: 'SourceSansPro',
                   ),
                 ),
                 Text(
@@ -58,6 +64,7 @@ class TasksScreen extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17.0,
+                    fontFamily: 'SourceSansPro',
                   ),
                 ),
                 SizedBox(height: 15),
@@ -84,30 +91,47 @@ class TasksScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               //height: 100,
               color: Colors.white,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.favorite,
-                    size: 50,
-                    color: Colors.lightBlueAccent,
-                  ),
-                  Icon(
-                    Icons.headphones,
-                    size: 50,
-                    color: Colors.lightBlueAccent,
-                  ),
-                  Icon(
-                    Icons.favorite,
-                    size: 50,
-                    color: Colors.lightBlueAccent,
-                  )
-                ],
+              child: Container(
+                child: Column(
+                  children: [
+                    Expanded(
+                        child: ListView.builder(
+                            itemCount: contacts.length,
+                            itemBuilder: (BuildContext contect, int index){
+                              return ContactItem(
+                                contacts[index].name
+                              );
+                        }),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget ContactItem(
+      String name) {
+    return ListTile(
+      title: Text(
+        name,
+        style:
+        TextStyle(
+          fontWeight: FontWeight.w500,
+          fontFamily: 'SourceSansPro',
+          fontSize: 17.0,
+        ),
+      ),
+      trailing: Icon(
+        Icons.check_box_outline_blank,
+        color: Colors.lightBlueAccent,
+      ),
+      onTap: () {
+
+      },
     );
   }
 }
