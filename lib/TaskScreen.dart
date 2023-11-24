@@ -1,4 +1,5 @@
 import 'package:assignment_1/MyPractice.dart';
+import 'package:assignment_1/test.dart';
 import 'package:flutter/material.dart';
 
 class ContactModel {
@@ -15,6 +16,7 @@ List<ContactModel> contacts = [
 
 class TasksScreen extends StatelessWidget {
   const TasksScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,113 +27,99 @@ class TasksScreen extends StatelessWidget {
           color: Colors.white,
         ),
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => MyPractice()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MyPractice()));
         },
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
+      body: Material(
+        color: Colors.lightBlueAccent,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.lightBlueAccent,
               ),
-              color: Colors.lightBlueAccent,
-            ),
-            padding: const EdgeInsets.only(
-                top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundImage: AssetImage('images/TT.jpg'),
-                ),
-                Text(
-                  "Tanvir Hossain",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'SourceSansPro',
+              padding: const EdgeInsets.only(
+                  top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage('images/TT.jpg'),
                   ),
-                ),
-                Text(
-                  "Tanvir1433@gmail.com",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17.0,
-                    fontFamily: 'SourceSansPro',
-                  ),
-                ),
-                SizedBox(height: 15),
-                Text(
-                  "My Tasks",
-                  style: TextStyle(
+                  Text(
+                    "Tanvir Hossain",
+                    style: TextStyle(
                       color: Colors.white,
-                      fontSize: 32.0,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.w700,
                       fontFamily: 'SourceSansPro',
-                      fontWeight: FontWeight.w700),
-                ),
-                Text(
-                  "3 Tasks",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+                    ),
                   ),
-                ),
-              ],
+                  Text(
+                    "Tanvir1433@gmail.com",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                      fontFamily: 'SourceSansPro',
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Text(
+                    "My Tasks",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32.0,
+                        fontFamily: 'SourceSansPro',
+                        fontWeight: FontWeight.w700),
+                  ),
+                  Text(
+                    "3 Tasks",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              //height: 100,
-              color: Colors.white,
-              child: Container(
-                child: Column(
-                  children: [
-                    Expanded(
+
+            ///===========================
+
+            /// body==
+            Expanded(
+              child: Material(
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)),
+
+                //height: 100,
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: [
+                      Expanded(
                         child: ListView.builder(
                             itemCount: contacts.length,
-                            itemBuilder: (BuildContext contect, int index){
-                              return ContactItem(
-                                contacts[index].name
+                            itemBuilder: (BuildContext contect, int index) {
+                              return Test(
+                                name: contacts[index].name,
                               );
-                        }),
-                    )
-                  ],
+                            }),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget ContactItem(
-      String name) {
-    return ListTile(
-      title: Text(
-        name,
-        style:
-        TextStyle(
-          fontWeight: FontWeight.w500,
-          fontFamily: 'SourceSansPro',
-          fontSize: 17.0,
+          ],
         ),
       ),
-      trailing: Icon(
-        Icons.check_box_outline_blank,
-        color: Colors.lightBlueAccent,
-      ),
-      onTap: () {
-
-      },
     );
   }
 }
+

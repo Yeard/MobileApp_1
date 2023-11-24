@@ -13,11 +13,11 @@ class MyPractice extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
+             const CircleAvatar(
                 radius: 50.0,
                 backgroundImage: AssetImage('images/Tanvir.jpeg'),
               ),
-              Text(
+              const  Text(
                 'Tanbir Hossain',
                 style: TextStyle(
                     fontSize: 35.0,
@@ -25,7 +25,7 @@ class MyPractice extends StatelessWidget {
                     fontFamily: 'Pacifico',
                     fontWeight: FontWeight.bold),
               ),
-              Text(
+              const  Text(
                 'FLUTTER DEVELOPER',
                 style: TextStyle(
                     fontSize: 20.0,
@@ -34,7 +34,7 @@ class MyPractice extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     letterSpacing: 2.0),
               ),
-              SizedBox(
+              const  SizedBox(
                 height: 20.0,
                 width: 150.0,
                 child: Divider(
@@ -42,7 +42,7 @@ class MyPractice extends StatelessWidget {
                 ),
               ),
               Card(
-                margin: EdgeInsets.symmetric(horizontal: 25.0,vertical: 10.0),
+                margin:  const EdgeInsets.symmetric(horizontal: 25.0,vertical: 10.0),
                 child: ListTile(
                   leading: Icon(
                     Icons.phone,
@@ -57,7 +57,7 @@ class MyPractice extends StatelessWidget {
                 ),
               ),
               Card(
-                margin: EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+                margin:  const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
                 child: ListTile(
                   leading: Icon(
                     Icons.mail,
